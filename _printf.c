@@ -25,15 +25,18 @@ int _printf(const char *format, ...)
 				return (-1);
 			if (format[i + 1] == '%')
 				len += _putchar('%');
-			if (format[i + 1] == ' ')
-				return (-1);
+			/*
+			 * if (format[i + 1] == ' ')
+			 *	return (-1);
+			 */
 			i++;
 			for (j = 0; j < 3; j++)
 			{
 				if (format[i] == *(sp + j))
 					len += (get_spec(format[i]))(args);
 			}
-			return (-1);
+			if (format[i] != *(sp + j))
+				return (-1);
 		}
 
 		else
