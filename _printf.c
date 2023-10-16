@@ -24,24 +24,21 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == '\0')
 				return (-1);
 			if (format[i + 1] == '%')
-				len += _putchar('%');
-			/*
-			 * if (format[i + 1] == ' ')
-			 *	return (-1);
-			 */
+				len += _putchar('%');	
+			if (format[i + 1] == ' ')
+				i++;
+
 			i++;
 			for (j = 0; j < 3; j++)
 			{
-				if (format[i] == *(sp + j))
+				if (sp[j] == format[i])
 					len += (get_spec(format[i]))(args);
 			}
 		}
-
 		else
 			len += _putchar(format[i]);
 		i++;
 	}
 	va_end(args);
-
 	return (len);
 }
