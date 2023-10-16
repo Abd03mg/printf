@@ -12,7 +12,7 @@ int print_char(va_list args)
 	int c = va_arg(args, int);
 
 	if (!c)
-		return (0);
+		c = '\0';
 
 	_putchar(c);
 	return (1);
