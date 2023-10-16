@@ -30,7 +30,7 @@ int print_str(va_list args)
 	char *s = va_arg(args, char *);
 
 	if (!s)
-		return (_puts("(null)"));
+		s = "(null)";
 
 	for (i = 0; s[i] != '\0'; i++)
 		_putchar(s[i]);
