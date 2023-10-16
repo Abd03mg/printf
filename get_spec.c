@@ -23,5 +23,5 @@ int (*get_spec(char c))(va_list args)
 			return (sp[i].f);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
