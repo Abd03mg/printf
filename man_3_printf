@@ -1,0 +1,14 @@
+.\" Manpage for _print.
+.TH man 3 "16 oct 2023" "1.0" "_printf man page"
+.SH NAME
+_printf \- print formated data.
+.SH SYNOPSIS
+_printf format [argument].
+.SH DESCRIPTION
+The functions in the _printf() family produce output according to a format.
+.SH EXAMPLES
+_#include "main.h"
+_printf("sum of 3 + 5: %d\n", 3 + 5);
+.SH AUTHOR
+ABDULRAHMAN EMGEIG (www.github.com/Abd03mg)
+
