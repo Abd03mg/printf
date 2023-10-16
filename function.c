@@ -12,7 +12,7 @@ int print_char(va_list args)
 	int c = va_arg(args, int);
 
 	 if (!c)
-		 return(NULL);
+		 return(0);
 
 	_putchar(c);
 	return (1);
@@ -30,7 +30,7 @@ int print_str(va_list args)
 	char *s = va_arg(args, char *);
 
 	 if (!s)
-		 return(NULL);
+		 return("(null)");
 
 	for (i = 0; s[i] != '\0'; i++)
 		_putchar(s[i]);
@@ -50,7 +50,7 @@ int print_dec(va_list args)
 	int dec = va_arg(args, int);
 
 	if (!dec)
-		return(NULL);
+		return(0);
 	n = dec;
 	while (n != 0)
 	{
