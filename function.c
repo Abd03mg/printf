@@ -50,7 +50,7 @@ int print_dec(va_list args)
 	int dec = va_arg(args, int);
 
 	if (!dec)
-		return (0);
+		return (_putchar('0'));
 	n = dec;
 	while (n != 0)
 	{
