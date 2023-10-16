@@ -31,9 +31,9 @@ int _printf(const char *format, ...)
 			for (j = 0; j < 3; j++)
 			{
 				if (format[i] == *(sp + j))
-				{
 					len += (get_spec(format[i]))(args);
-				}
+				else
+					return (-1);
 			}
 		}
 
