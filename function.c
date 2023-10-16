@@ -58,5 +58,6 @@ int print_dec(va_list args)
 	}
 	for (i = 0; i < c; i++)
 		_putchar(arr[c - i - 1] + '0');
+	free(arr);
 	return (c);
 }
