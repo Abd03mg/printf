@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int len = 0, j;
-	char *sp = "%csd";
+	char *sp = "csd";
 	va_list args;
 
 	va_start(args, format);
@@ -25,6 +25,8 @@ int _printf(const char *format, ...)
 		{
 			if (*(format + 1) == '\0')
 				return (-1);
+			if (*(format + 1) == '%')
+				len += _putchar('%');
 
 			format++;
 			for (j = 0; sp[j] != '\0'; j++)

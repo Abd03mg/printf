@@ -82,14 +82,3 @@ int _puts(char *s)
 		_putchar(s[c]);
 	return (c);
 }
-
-/**
- * print_per - prints percent sign.
- *
- * Return: 1.
- */
-
-int print_per(void)
-{
-	return (_putchar('%'));
-}
