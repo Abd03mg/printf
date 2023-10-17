@@ -10,12 +10,14 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0, i = 0, j;
+	int len = 0, j;
 	char *sp = "%csd";
 	va_list args;
 
 	va_start(args, format);
-	if (!format || !format[i])
+	if (!format || !format[0])
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 	while (*format && format)
 	{
@@ -35,5 +37,6 @@ int _printf(const char *format, ...)
 			len += _putchar(*format);
 		format++;
 	}
+	va_end(args);
 	return (len);
 }
