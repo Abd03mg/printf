@@ -11,34 +11,29 @@
 int _printf(const char *format, ...)
 {
 	int len = 0, i = 0, j;
-	char *sp = "csd";
+	char *sp = "%csd";
 	va_list args;
 
 	va_start(args, format);
 	if (!format || !format[i])
 		return (-1);
-	while (format && format[i])
+	while (*format && format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			if (format[i + 1] == '\0')
+			if (*(format + 1) == '\0')
 				return (-1);
-			if (format[i + 1] == '%')
-				len += _putchar('%');
-			if (format[i + 1] == ' ')
-				i++;
 
-			i++;
-			for (j = 0; j < 3; j++)
+			format++;
+			for (j = 0; sp[j] != '\0'; j++)
 			{
-				if (sp[j] == format[i])
+				if (sp[j] == *format)
 					len += (get_spec(sp[j]))(args);
 			}
 		}
 		else
-			len += _putchar(format[i]);
-		i++;
+			len += _putchar(*format);
+		format++;
 	}
-	va_end(args);
 	return (len);
 }
