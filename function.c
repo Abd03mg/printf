@@ -51,6 +51,11 @@ int print_dec(va_list args)
 	if (!dec)
 		return (-1);
 	n = dec;
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
 	while (n != 0)
 	{
 		n /= 10;
