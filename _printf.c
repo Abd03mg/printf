@@ -35,10 +35,7 @@ int _printf(const char *format, ...)
 					len += (get_spec(sp[j]))(args);
 			}
 			if (!(get_spec(format[i])))
-			{
-				_putchar('%');
-				_putchar(format[i]);
-			}
+				return (-1);
 		}
 		else
 			len += _putchar(format[i]);
