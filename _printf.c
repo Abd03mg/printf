@@ -37,8 +37,6 @@ int _printf(const char *format, ...)
 		 */
 			if (get_spec(*format))
 				len += (get_spec(*format))(args);
-			else
-				return (-1);
 		}
 		else
 			len += _putchar(*format);
