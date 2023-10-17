@@ -26,9 +26,13 @@ int print_char(va_list args)
 
 int print_str(va_list args)
 {
-	int i;
+	int i, j;
 	char *s = va_arg(args, char *);
 
+	for (j = 0; s[j] != '\0'; j++)
+		;
+	if (j == 0)
+		return (-1);
 	if (s == NULL)
 		s = "(null)";
 	for (i = 0; s[i] != '\0'; i++)
