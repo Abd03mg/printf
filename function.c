@@ -89,7 +89,7 @@ int _puts(char *s)
  * Return: 1.
  */
 
-int print_per()
+int print_per(void)
 {
 	return (_putchar('%'));
 }
