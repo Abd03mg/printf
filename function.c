@@ -96,17 +96,22 @@ int _puts(char *s)
 
 int print_bin(va_list args)
 {
-	int arr[1024];
-	int c = 0, n, i;
+	int arr[32];
+	int c, n, i;
 
 	n = va_arg(args, unsigned int);
-	while (n != 0)
+	if (n == 0)
 	{
-		n /= 2;
-		arr[c] = n * n % 2;
-		c++;
+		_putchar('0');
+		return (1);
 	}
-	for (i = 0; i < c; i++)
-		putchar(arr[i] + '0');
-	return (c);
+	for (i = 0; n > 0; i++)
+	{
+		arr[i] = n % 2;
+		n /= 2;
+	}
+
+	for (c = i - 1; c >= 0; c--)
+		_putchar(arr[c] + '0');
+	return (i);
 }
