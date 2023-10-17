@@ -48,28 +48,26 @@ int print_dec(va_list args)
 	int i, c = 0, n;
 	int dec = va_arg(args, int);
 
-	if (!dec)
-		return (-1);
 	n = dec;
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
 	while (n != 0)
 	{
 		n /= 10;
 		c++;
 	}
 	n = dec;
+	if (n < 0)
+	{
+		_putchar('-');
+		n = n * -1;
+	}
 	arr = malloc(sizeof(int) * c);
 	for (i = 0; i < c; i++)
 	{
-		arr[i] = n % 10;
+		arr[c - i - 1] = n % 10;
 		n /= 10;
 	}
 	for (i = 0; i < c; i++)
-		_putchar(arr[c - i - 1] + '0');
+		_putchar(arr[i] + '0');
 	free(arr);
 	return (c);
 }
