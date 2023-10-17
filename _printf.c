@@ -10,8 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0, j;
-	char *sp = "csdib";
+	int len = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -20,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	while (*format != '\0' && *format)
+	while (*format && format)
 	{
 		if (*format == '%')
 		{
@@ -29,12 +28,17 @@ int _printf(const char *format, ...)
 				return (-1);
 			if (*(format) == '%')
 				len += _putchar('%');
-
-			for (j = 0; sp[j] != '\0'; j++)
-			{
-				if (sp[j] == *format)
-					len += (get_spec(sp[j]))(args);
-			}
+		/*
+		 *	for (j = 0; sp[j] != '\0'; j++)
+		 *	{
+		 *		if (sp[j] == *format)
+		 *			len += (get_spec(sp[j]))(args);
+		 *	}
+		 */
+			if (get_spec(*format))
+				len += (get_spec(*format))(args);
+			else
+				return (-1);
 		}
 		else
 			len += _putchar(*format);
