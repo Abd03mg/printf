@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	int len = 0, j;
-	char *sp = "csdi";
+	char *sp = "csdib";
 	va_list args;
 
 	va_start(args, format);
