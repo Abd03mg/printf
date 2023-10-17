@@ -86,3 +86,27 @@ int _puts(char *s)
 		_putchar(s[c]);
 	return (c);
 }
+
+/**
+ * print_bin - print binary.
+ *
+ * @args: input int.
+ * Return: count of printed char.
+ */
+
+int print_bin(va_list args)
+{
+	int arr[1024];
+	int c = 0, n, i;
+
+	n = va_arg(args, unsigned int);
+	while (n != 0)
+	{
+		n /= 2;
+		arr[c] = n * n % 2;
+		c++;
+	}
+	for (i = 0; i < c; i++)
+		putchar(arr[i] + '0');
+	return (c);
+}

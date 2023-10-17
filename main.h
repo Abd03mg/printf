@@ -23,6 +23,7 @@ int _putchar(char c);
 int print_char(va_list args);
 int print_str(va_list args);
 int print_dec(va_list args);
+int print_bin(va_list args);
 int (*get_spec(char c))(va_list args);
 int _puts(char *s);
 
