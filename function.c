@@ -86,11 +86,10 @@ int _puts(char *s)
 /**
  * print_per - prints percent sign.
  *
- * @args: input per.
  * Return: 1.
  */
 
-int print_per(va_list args)
+int print_per()
 {
 	return (_putchar('%'));
 }
