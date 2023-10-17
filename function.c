@@ -26,12 +26,14 @@ int print_char(va_list args)
 
 int print_str(va_list args)
 {
+	int i;
 	char *s = va_arg(args, char *);
 
 	if (!s)
 		s = "(null)";
-
-	return (_puts(s));
+	for (i = 0; s[i] != '\0'; i++)
+		_putchar(s[i]);
+	return (i);
 }
 
 /**
@@ -74,9 +76,9 @@ int print_dec(va_list args)
  */
 int _puts(char *s)
 {
-	register int c;
+	int c;
 
-	for (c = 0; s[c] != '\0'; c++)
+	for (c = 0; *(s + c) != '\0'; c++)
 		_putchar(s[c]);
 	return (c);
 }

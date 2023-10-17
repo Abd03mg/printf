@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == '\0')
 				return (-1);
 			if (format[i + 1] == '%')
-				len += _putchar('%');	
+				len += _putchar('%');
 			if (format[i + 1] == ' ')
 				i++;
 
@@ -32,7 +32,12 @@ int _printf(const char *format, ...)
 			for (j = 0; j < 3; j++)
 			{
 				if (sp[j] == format[i])
-					len += (get_spec(format[i]))(args);
+					len += (get_spec(sp[j]))(args);
+			}
+			if (!(get_spec(format[i])))
+			{
+				_putchar('%');
+				_putchar(format[i]);
 			}
 		}
 		else

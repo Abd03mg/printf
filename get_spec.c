@@ -21,6 +21,8 @@ int (*get_spec(char c))(va_list args)
 	{
 		if (sp[i].c == c)
 			return (sp[i].f);
+		if (c == 'a')
+			return (0);
 		i++;
 	}
 	return (0);
