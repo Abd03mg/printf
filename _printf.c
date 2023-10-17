@@ -1,46 +1,37 @@
 #include "main.h"
 
 /**
- * _printf - function that produce output according
- * to a format.
- *
- * @format: specific format.
- * Return: lenght of printed items.
- */
+ * _printf - fucntion that print formated text.
+ * 
+ * @format: input format.
+ * Return: count of printed char.
+*/
 
 int _printf(const char *format, ...)
 {
-	int len = 0;
-	va_list args;
+    int (*f)(va_list args);
+    va_list args;
+    int printed_c = 0, i;
 
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	va_start(args, format);
-	while (*format && format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*(format) == '\0')
-				return (-1);
-			if (*(format) == '%')
-				len += _putchar('%');
-		/*
-		 *	for (j = 0; sp[j] != '\0'; j++)
-		 *	{
-		 *		if (sp[j] == *format)
-		 *			len += (get_spec(sp[j]))(args);
-		 *	}
-		 */
-			if (get_spec(*format))
-				len += (get_spec(*format))(args);
-		}
-		else
-			len += _putchar(*format);
-		format++;
-	}
-	va_end(args);
-	return (len);
+    if (format == NULL || *format == '%' && *(format + 1) == (' ' || '\0'))
+        return (-1);
+    va_start(args, format);
+    for ( ; *format != '\0' && *format; format++)
+    {
+        if (*format != '%')
+        {   
+            printed_c += _printchar(*format);
+        }
+        else
+        {
+            format++;
+            if (*format == '%')
+                _putchar('%');
+            f = get_spec(*format);
+            if (f)
+                printed_c += f(args);
+        }
+    }
+    va_end(args);
+    return (printed_c);  
 }
