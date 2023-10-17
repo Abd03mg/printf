@@ -45,7 +45,7 @@ int print_str(va_list args)
 int print_dec(va_list args)
 {
 	int *arr;
-	int i, c = 0, n;
+	int i, c = 0, n, neg = 0;
 	int dec = va_arg(args, int);
 
 	n = dec;
@@ -59,6 +59,7 @@ int print_dec(va_list args)
 	{
 		_putchar('-');
 		n = n * -1;
+		neg = 1;
 	}
 	arr = malloc(sizeof(int) * c);
 	for (i = 0; i < c; i++)
@@ -69,7 +70,7 @@ int print_dec(va_list args)
 	for (i = 0; i < c; i++)
 		_putchar(arr[i] + '0');
 	free(arr);
-	return (c);
+	return (c + neg);
 }
 
 /**
