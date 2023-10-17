@@ -15,7 +15,7 @@ int (*get_spec(char c))(va_list args)
 		{'c', print_char},
 		{'d', print_dec},
 		{'i', print_dec},
-		{'b', print_bin};
+		{'b', print_bin}
 	};
 	int i = 0;
 
