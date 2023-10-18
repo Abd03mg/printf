@@ -35,18 +35,14 @@ int _printf(const char *format, ...)
 			if (get_spec(*format))
 			{
 				len += (get_spec(*format))(args);
-				format += 2;
 			}
 		}
-		else
+		if (*format == '\0')
 		{
-			if (*format == '\0')
-			{
-				va_end(args);
-				return (len);
-			}
-			len += _putchar(*format);
+			va_end(args);
+			return (len);
 		}
+		len += _putchar(*format);
 		format++;
 	}
 	va_end(args);
