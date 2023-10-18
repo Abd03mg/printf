@@ -10,6 +10,7 @@
 
 int _printf(const char *format, ...)
 {
+	int (*f)(va_list);
 	int len = 0;
 	va_list args;
 
@@ -26,16 +27,14 @@ int _printf(const char *format, ...)
 			if (*(format) == '%')
 				len += _putchar('%');
 
-			if (get_spec(*format))
-				len += (get_spec(*format))(args);
+			f = get_spec(*format);
+			if (f)
+				len += f(args);
+			else
+				return (-1);
 		}
 		else
 		{
-			if (*format == '\0')
-			{
-				va_end(args);
-				return (len);
-			}
 			len += _putchar(*format);
 		}
 		format++;
