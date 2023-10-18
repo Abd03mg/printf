@@ -10,7 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0;
+	int len = 0, n = 0;
 	va_list args;
 
 	if (!format)
@@ -32,13 +32,10 @@ int _printf(const char *format, ...)
 		 *			len += (get_spec(sp[j]))(args);
 		 *	}
 		 */
-			if (get_spec(*format))
-			{
-				if((get_spec(*format))(args))
-					len += (get_spec(*format));
-				else
-					return (-1);
-			}
+			if((n = (get_spec(*format))(args)))
+				len += n;
+			else
+				return (-1);
 		}
 		else
 		{
