@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 		format++;
 		if (*format == '\0')
 			return (-1);
-		if (!*format)
+		if (!(*format))
 			return (-1);
 		f = get_spec(*format);
 		if (f)
