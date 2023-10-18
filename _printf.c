@@ -41,6 +41,8 @@ int _printf(const char *format, ...)
 		{
 			if (*format == '\0')
 				return (len);
+			if (!(*format))
+				return (-1);
 			len += _putchar(*format);
 		}
 		format++;
