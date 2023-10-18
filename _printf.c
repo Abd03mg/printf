@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			format++;
 			if (*(format + 1) == '\0')
 				return (-1);
 			if (*(format + 1) == '%')
@@ -31,10 +32,8 @@ int _printf(const char *format, ...)
 		 *			len += (get_spec(sp[j]))(args);
 		 *	}
 		 */
-			format++;
 			if (get_spec(*format + 1))
 			{
-				format++;
 				len += (get_spec(*format))(args);
 			}
 		}
