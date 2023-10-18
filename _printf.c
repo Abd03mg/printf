@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 		 *			len += (get_spec(sp[j]))(args);
 		 *	}
 		 */
-			if (get_spec(*format + 1))
+			if (get_spec(*format))
 			{
 				len += (get_spec(*format))(args);
 			}
