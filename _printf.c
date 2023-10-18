@@ -31,10 +31,11 @@ int _printf(const char *format, ...)
 		 *			len += (get_spec(sp[j]))(args);
 		 *	}
 		 */
+			format++;
 			if (get_spec(*format + 1))
 			{
-				len += (get_spec(*format))(args);
 				format++;
+				len += (get_spec(*format))(args);
 			}
 		}
 		else
