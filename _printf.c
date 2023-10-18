@@ -34,9 +34,10 @@ int _printf(const char *format, ...)
 		 */
 			if (get_spec(*format))
 			{
-				format++;
 				len += (get_spec(*format))(args);
 			}
+			else
+				return (-1);
 		}
 		else
 		{
