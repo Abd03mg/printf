@@ -26,15 +26,10 @@ int _printf(const char *format, ...)
 				return (-1);
 			if (*(format) == '%')
 				len += _putchar('%');
-			for (j = 0; sp[j] != '\0'; j++)
-			{
-				if (sp[j] == *format)
-					len += (get_spec(sp[j]))(args);
-   			}
-		/*
-		 *	if((get_spec(*format))(args))
-		 *	len += n;
-		 */
+
+			if((!(get_spec(*format))(args)))
+				return (-1);
+			
 		}
 		else
 		{
