@@ -25,8 +25,10 @@ int _printf(const char *format, ...)
 				return (-1);
 			if (*(format) == '%')
 				len += _putchar('%');
-
-			n = (get_spec(*format))(args);
+			
+			get_spec(*format))(args);
+			n = (void)(get_spec(*format))(args);
+			
 			if (n == -1)
 				return (-1);
 			else
