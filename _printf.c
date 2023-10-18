@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	int (*f)(va_list args);
 	va_list args;
-	int printed_c = 0, i;
+	int printed_c = 0;
 
 	if (format == NULL || *format == '%' && *(format + 1) == (' ' || '\0'))
 		return (-1);
