@@ -10,7 +10,8 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0, n = 0;
+	int len = 0;
+	char *sp = "csdib";
 	va_list args;
 
 	if (!format)
@@ -25,15 +26,15 @@ int _printf(const char *format, ...)
 				return (-1);
 			if (*(format) == '%')
 				len += _putchar('%');
+			for (j = 0; sp[j] != '\0'; j++)
+			{
+				if (sp[j] == *format)
+					len += (get_spec(sp[j]))(args);
+   			}
 		/*
-		 *	for (j = 0; sp[j] != '\0'; j++)
-		 *	{
-		 *		if (sp[j] == *format)
-		 *			len += (get_spec(sp[j]))(args);
-		 *	}
+		 *	if((get_spec(*format))(args))
+		 *	len += n;
 		 */
-			if((get_spec(*format))(args))
-				len += n;
 		}
 		else
 		{
