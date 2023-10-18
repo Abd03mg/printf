@@ -40,15 +40,14 @@ int _printf(const char *format, ...)
 		else
 		{
 			if (*format == '\0')
+			{
+				va_end(args);
 				return (len);
-			if (!(*format))
-				return (-1);
+			}
 			len += _putchar(*format);
 		}
 		format++;
 	}
-	else
-		return (-1);
 	va_end(args);
 	return (len);
 }
