@@ -20,10 +20,9 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;
-			if (*(format) == '\0')
+			if (*(format + 1) == '\0')
 				return (-1);
-			if (*(format) == '%')
+			if (*(format + 1) == '%')
 				len += _putchar('%');
 		/*
 		 *	for (j = 0; sp[j] != '\0'; j++)
@@ -32,17 +31,21 @@ int _printf(const char *format, ...)
 		 *			len += (get_spec(sp[j]))(args);
 		 *	}
 		 */
-			if (get_spec(*format))
+			if (get_spec(*format + 1))
 			{
+				format++;
 				len += (get_spec(*format))(args);
 			}
 		}
-		if (*format == '\0')
+		else
 		{
-			va_end(args);
-			return (len);
+			if (*format == '\0')
+			{
+				va_end(args);
+				return (len);
+			}		
+			len += _putchar(*format);
 		}
-		len += _putchar(*format);
 		format++;
 	}
 	va_end(args);
