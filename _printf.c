@@ -33,8 +33,8 @@ int _printf(const char *format, ...)
 		 */
 			if (get_spec(*format + 1))
 			{
-				format++;
 				len += (get_spec(*format))(args);
+				format++;
 			}
 		}
 		else
