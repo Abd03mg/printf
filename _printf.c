@@ -10,8 +10,7 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0;
-	char *sp = "csdib";
+	int len = 0, n = 0;
 	va_list args;
 
 	if (!format)
@@ -27,9 +26,9 @@ int _printf(const char *format, ...)
 			if (*(format) == '%')
 				len += _putchar('%');
 
-			if((!(get_spec(*format))(args)))
+			n = (get_spec(*format))(args);
+			if (n == -1)
 				return (-1);
-			
 		}
 		else
 		{
