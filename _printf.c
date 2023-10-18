@@ -25,7 +25,9 @@ int _printf(const char *format, ...)
 	else
 	{
 		format++;
-		if (*format == '\0' || !(*format))
+		if (*format == '\0')
+			return (-1);
+		if (!*format)
 			return (-1);
 		f = get_spec(*format);
 		if (f)
