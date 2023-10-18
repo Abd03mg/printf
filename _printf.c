@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 	{
 	if (*format != '%')
 	{
+		if (*format == '\0')
+			return (printed_c);
 		printed_c += _putchar(*format);
 	}
 	else
