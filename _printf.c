@@ -21,9 +21,9 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*(format + 1) == '\0')
+			if (*(format) == '\0')
 				return (-1);
-			if (*(format + 1) == '%')
+			if (*(format) == '%')
 				len += _putchar('%');
 		/*
 		 *	for (j = 0; sp[j] != '\0'; j++)
