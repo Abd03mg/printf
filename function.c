@@ -9,14 +9,12 @@
 
 int print_char(va_list args)
 {
-	int c = va_arg(args, int), r = 1;
+	int c = va_arg(args, int);
 
 	if (!c)
-	{
-		c = 0;
-		r = -1;
+		return (-1);
 	_putchar(c);
-	return (r);
+	return (1);
 }
 
 /**
@@ -27,7 +25,7 @@ int print_char(va_list args)
 
 int print_str(va_list args)
 {
-	int i, j, r;
+	int i, j;
 	char *s = va_arg(args, char *);
 
 	for (j = 0; s[j] != '\0'; j++)
@@ -37,12 +35,10 @@ int print_str(va_list args)
 	if (s == NULL)
 	{
 		s = "(null)";
-		r = -1;
 	}
 	for (i = 0; s[i] != '\0'; i++)
 		_putchar(s[i]);
-	r = i;
-	return (r);
+	return (i);
 }
 
 /**
@@ -113,11 +109,11 @@ int _puts(char *s)
 int print_bin(va_list args)
 {
 	int arr[32];
-	int c, n, i, r;
+	int c, n, i;
 
 	n = va_arg(args, unsigned int);
 	if (!n)
-		r = -1;
+		return (-1);
 	if (n == 0)
 	{
 		_putchar('0');
@@ -131,6 +127,5 @@ int print_bin(va_list args)
 
 	for (c = i - 1; c >= 0; c--)
 		_putchar(arr[c] + '0');
-	r = i;
-	return (r);
+	return (i);
 }
