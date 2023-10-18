@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int printed_c = 0;
 
-	if (format == NULL || ((*format == '%') && *(format + 1) == (' ' || '\0')))
+	if (format == NULL || ((*format == '%') && *(format + 1) == '\0'))
 		return (-1);
 	va_start(args, format);
 	for ( ; *format; format++)
@@ -28,6 +28,8 @@ int _printf(const char *format, ...)
 	{
 		format++;
 		if (*format == '\0')
+			return (-1);
+		if (*format = ' ')
 			return (-1);
 		f = get_spec(*format);
 		if (f)
