@@ -47,8 +47,6 @@ int print_dec(va_list args)
 	int i, c = 0, n, neg = 0;
 	int dec = va_arg(args, int);
 
-	if (!dec)
-		return (-1);
 	n = dec;
 	if (n == 0)
 	{
