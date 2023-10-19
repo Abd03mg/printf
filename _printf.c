@@ -25,10 +25,10 @@ int _printf(const char *format, ...)
 			f = get_spec(*format);
 			if (*(format) != '%')
 			{
-				if (f == 0)
-					return (-1);
-				else
+				if (f)
 					len += f(args);
+				else
+					return (-1);
 			}
 			else
 			{
