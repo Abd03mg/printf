@@ -2,7 +2,7 @@
 
 /**
  * _printf - function that produce output according
- * to a formate.
+ * to a format.
  *
  * @format: specific format.
  * Return: lenght of printed items.
