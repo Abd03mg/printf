@@ -25,20 +25,21 @@ int print_char(va_list args)
 
 int print_str(va_list args)
 {
-	int i, j;
+	int i, r;
 	char *s = va_arg(args, char *);
 
-	for (j = 0; s[j] != '\0'; j++)
-		;
-	if (j == 0)
-		return (-1);
 	if (s == NULL)
 	{
 		s = "(null)";
+		r = -1;
+		for (i = 0; s[i] != '\0'; i++)
+			_putchar(s[i]);
 	}
 	for (i = 0; s[i] != '\0'; i++)
 		_putchar(s[i]);
-	return (i);
+	if (i > 0)
+		r = i;
+	return (r);
 }
 
 /**
@@ -82,7 +83,7 @@ int print_dec(va_list args)
 	for (i = 0; i < c; i++)
 		_putchar(arr[i] + '0');
 	free(arr);
-	return (c + neg);
+	return (1 + neg);
 }
 
 /**

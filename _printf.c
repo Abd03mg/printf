@@ -22,16 +22,14 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*(format) == '\0')
-				return (-1);
 			if (*(format) == '%')
+			{
 				len += _putchar('%');
+			}
 
 			f = get_spec(*format);
 			if (f)
 				len += f(args);
-			else
-				return (-1);
 		}
 		else
 		{
