@@ -30,7 +30,10 @@ int _printf(const char *format, ...)
 				if (f)
 					len += f(args);
 				else
-					return (NULL);
+				{
+					len += _putchar('%');
+					len += _putchar(*format);
+				}
 			}
 			else
 			{
