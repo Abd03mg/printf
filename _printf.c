@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int len = 0;
 	va_list args;
 
-	if (!format)
+	if (!format || *format == '\0')
 		return (-1);
 	va_start(args, format);
 	while (*format)
@@ -22,14 +22,18 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*(format) == '%')
+			f = get_spec(*format);
+			if (*(format) != '%')
+			{
+				if (f == 0)
+					return (-1);
+				else
+					len += f(args);
+			}
+			else
 			{
 				len += _putchar('%');
 			}
-
-			f = get_spec(*format);
-			if (f)
-				len += f(args);
 		}
 		else
 		{
