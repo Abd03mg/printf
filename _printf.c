@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 				if (f)
 					len += f(args);
 				else
-					return (1);
+					return (NULL);
 			}
 			else
 			{
