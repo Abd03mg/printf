@@ -44,20 +44,23 @@ int print_str(va_list args)
 int print_dec(va_list args)
 {
 	int *arr;
-	int i, c = 0, n, neg = 0;
-	int dec = va_arg(args, int);
+	int i, c = 0, n, neg = 0, isMIN = 0, dec = va_arg(args, int);
 
+	if (dec == INT_MIN)
+	{
+		isMIN = 1;
+		dec = INT_MAX;
+		_putchar('-');
+	}
 	n = dec;
 	if (n == 0)
 	{
 		_putchar('0');
 		return (1);
 	}
-	while (n != 0)
-	{
-		n /= 10;
+	while ((n /= 10))
 		c++;
-	}
+	c++;
 	n = dec;
 	if (n < 0)
 	{
@@ -65,16 +68,28 @@ int print_dec(va_list args)
 		n = n * -1;
 		neg = 1;
 	}
-	arr = malloc(sizeof(int) * c);
+	arr = malloc(sizeof(int) * c + 1);
+	if (arr == NULL)
+		return (-1);
 	for (i = 0; i < c; i++)
 	{
 		arr[c - i - 1] = n % 10;
 		n /= 10;
 	}
 	for (i = 0; i < c; i++)
+	{
+		if (isMIN == 1)
+		{
+			if ((i + 1) == c)
+			{
+				_putchar(arr[i] + 1 + '0');
+				break;
+			}
+		}
 		_putchar(arr[i] + '0');
+	}
 	free(arr);
-	return (i + neg);
+	return (i + neg + isMIN);
 }
 
 /**
