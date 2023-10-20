@@ -18,11 +18,12 @@ int (*get_spec(char c))(va_list args)
 		{'b', print_bin},
 		{'x', print_hex},
 		{'u', print_unsigned},
-		{'o', print_octal}
+		{'o', print_octal},
+		{'X', print_hex_upper}
 	};
 	int i = 0;
 
-	while (i < 8)
+	while (i < 9)
 	{
 		if (sp[i].c == c)
 			return (sp[i].f);
