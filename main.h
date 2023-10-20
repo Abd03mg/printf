@@ -26,5 +26,9 @@ int print_dec(va_list args);
 int print_bin(va_list args);
 int (*get_spec(char c))(va_list args);
 int _puts(char *s);
+char *int_to_str(long int a, int base);
+int print_hex(va_list args);
+int print_unsigned(va_list args);
+int print_octal(va_list args);
 
 #endif
